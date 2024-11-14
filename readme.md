@@ -4,6 +4,14 @@
 
 [Briefly describe what your project does and why you made it]
 
+### Primary Features
+
+- [Feature 1]
+- [Feature 2]
+- [Feature 3]
+
+---
+
 ## Project Structure
 
 ```
@@ -27,7 +35,7 @@
 
 1. Install dependencies
 
-Document your project dependencies here:
+[TODO: Document your project dependencies here]
 
 ```bash
 pip install <dependency>
