@@ -7,4 +7,4 @@ Here you'll find resources to help you complete your final project. This include
 ## Links
 
 - [Final Project Guide](./final-project-guide.md)
-- [AI Assistance](./ai-assistance.md)]
+- [AI Assistance](./ai-assistance.md)
