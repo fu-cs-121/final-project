@@ -1,153 +1,145 @@
-# Phase 2: Developing the User Interface (UI) and Enhancing User Experience (UX)
+## Final Project Finishing Touches
 
-In Phase 2, we'll leverage the business logic developed in Phase 1 to create a user-friendly interface (UI) that enhances the user experience (UX).
-
-While Phase 1 focused on the underlying business logic, the UI is the component that users will directly interact with. It’s crucial to adopt the user's perspective during this phase to ensure the interface is intuitive and easy to use.
-
-**What is a UI?**  
-The User Interface (UI) is the part of your program that users see and interact with. It encompasses the layout, design, and interactive elements that facilitate user interaction with your application.
+It's time to put the finishing touches on your final project! Below are a few things to check through that will help shape your project into something you can be proud of.
 
 ---
 
-## Part 1: Choosing Your User Interface
+### Part 1: Q/A and Usability
 
-You have the flexibility to choose any type of UI that best aligns with your project goals and personal interests. Below are some common options:
+#### Quality Assurance
 
-- **Terminal Interface (CLI):**  
-  A text-based interface where users interact with your program through the command line. This is ideal for applications that don't require graphical elements.
+Ensure your program runs smoothly, even when users provide unexpected inputs. The goal is to make your project as reliable and user-friendly as possible.
 
-- **Web Interface using Flask:**  
-  A web-based application allowing users to interact with your program through a browser. This option is suitable for projects that benefit from a graphical layout and accessibility from various devices.
+**Testing Your Code**
 
-- **Game Interface with Pygame:**  
-  A graphical interface tailored for game development, offering rich visuals and interactive elements. This is perfect for projects that involve real-time user interactions and multimedia.
+- **Test All Code Paths**: Go through your code and test every possible path, including edge cases.
+- **Input Validation**: Check that all user inputs are validated before processing.
+  - _Example_: If the program expects a number between 1 and 10, ensure it handles inputs like "0", "11", or "abc" gracefully.
+- **Error Handling**: Use `try`/`except` blocks where appropriate to catch exceptions and provide meaningful error messages to the user.
+  - _Example_:
+    ```python
+    try:
+        number = int(input("Enter a number: "))
+    except ValueError:
+        print("Please enter a valid integer.")
+    ```
 
-- **Report/Document Generation:**  
-  Applications that generate formatted documents or reports based on user inputs or data processing. This often complements a simple CLI for user interaction.
+**Tips**
 
-- **Something Else?**  
-  If you have other UI ideas, feel free to explore them. Discuss your ideas with your instructor or teaching assistants to ensure they align with project requirements.
+- Think about how users might misuse your program and ensure it doesn't crash.
+- Provide clear and helpful feedback to guide users back on track.
 
-**Note:** You may implement multiple interfaces for your program, as the business logic developed in Phase 1 can be reused across different UIs.
+#### Usability Testing
 
----
+To improve your program's usability, consider conducting a simple user test. Here's a script you can follow:
 
-## Part 2: Planning Your User Experience
+**Usability Testing Script**
 
-Before you begin coding, it’s essential to plan how users will interact with your program. Follow these steps to design an effective user experience:
+1. **Prepare**
 
-### 1. Identify User Actions
+   - Briefly explain to the tester what your program is about.
+   - Let them know you'll be observing how they use it.
 
-- **Tasks:**  
-  Determine what tasks users should be able to perform within your application.
+2. **Observation**
 
-- **Inputs:**  
-  Define the types of data or commands users will provide.
+   - Ask them to use your program without providing detailed instructions.
+   - Encourage them to "think aloud" as they navigate through it.
 
-- **Outputs/Feedback:**  
-  Specify the responses or feedback users will receive after performing actions.
+3. **Take Notes**
 
-### 2. Design the User Flow
+   - Note any points where they seem confused or make mistakes.
+   - Pay attention to their comments and reactions.
 
-- **Step Mapping:**  
-  Outline the sequence of steps a user will take to complete each task.
+4. **Feedback**
+   - After the session, ask them what they found intuitive or challenging.
+   - Inquire about any suggestions they might have for improvement.
 
-- **Navigation:**  
-  Consider how users will move between different parts of your application, ensuring the flow is logical and seamless.
+**Implement Improvements**
 
-**Tools:**
-
-### 3. Sketch the Interface
-
-- **Graphical Interfaces:**  
-  Create mockups or wireframes of screens or pages to visualize the layout and design.
-
-- **CLI:**  
-  Design the structure of commands and prompts, ensuring they are intuitive and easy to use.
-
-You may use any tool you like to sketch out your UI ideas. Here are a few popular options:
-
-- [Whimsical](https://whimsical.com/): A free tool for creating flowcharts and wireframes.
-- [tldraw](https://tldraw.com/): Another simple, free tool for creating flowcharts and diagrams.
-- [Excalidraw](https://excalidraw.com/): A collaborative professional tool for sketching diagrams and UI flows.
-- Pen and Paper: A simple way to sketch out your UI ideas.
+- Use the insights gained to refine your program.
+- Consider adjusting prompts, improving instructions, or simplifying navigation based on the feedback.
 
 ---
 
-## Part 3: Coding Your UI
+### Part 2: Persistence
 
-Depending on the type of UI you choose, the implementation steps will vary. Below are guidelines to help you get started:
+Enhance your program by allowing it to save user data between sessions. This helps users resume where they left off without re-entering information each time.
 
-### Setting Up Your UI Code
+**Identify Data to Persist**
 
-Start by setting up the appropriate files for your chosen UI type:
+Think about what data in your program would benefit from being saved. Examples include:
 
-- **CLI (Command Line Interface):**  
-  Begin by defining your CLI code in the `main.py` file.
+- User preferences or settings.
+- Progress data (e.g., completed tasks, scores).
+- User-generated content (e.g., notes, entries).
 
-- **Flask Web Interface:**
+**Implementing Save/Load Functions**
 
-  - Create a new file named `web.py` to define your Flask application.
-  - Set up a `/templates` folder to store your HTML templates.
+- **Use JSON for Data Storage**
 
-- **Pygame Interface:**
+  - _What is JSON?_ JSON (JavaScript Object Notation) is a lightweight format for storing and transporting data. It's easy to read and write for humans and easy to parse and generate for machines.
+  - _Why Use JSON?_ It's ideal for saving complex data structures like dictionaries and lists, making it suitable for most program data.
 
-  - Create a new file named `game.py` to define your Pygame code.
+- **Add Save and Load Methods**
+  - Integrate `save_data` and `load_data` methods into your main business logic class.
+  - Call `load_data` when your program starts to initialize data.
+  - Call `save_data` whenever data that needs to persist changes.
 
-- **Report/Document Generation:**
-  - Implement the necessary scripts to generate and format documents.
-  - Optionally, use a simple CLI to handle user inputs and trigger report generation.
+**Example Approach**
 
-**Resources:**  
-Refer to the [Final Project Example Repositories](https://github.com/fu-cs-121/final-project/blob/main/resources/examples.md) to see practical implementations of different UI types.
+```python
+import json
 
-### General Guidelines
+class MyProgram:
+    def __init__(self):
+        self.data = {}
+        self.load_data()
 
-- **Separation of Concerns:**
+    def save_data(self, filename='data.json'):
+        with open(filename, 'w') as f:
+            json.dump(self.data, f)
 
-  - Your UI code should import and utilize classes and business logic from `core.py`.
-  - Ensure that the UI is solely responsible for handling input/output and user interactions. Avoid embedding business logic within the UI layer.
+    def load_data(self, filename='data.json'):
+        try:
+            with open(filename, 'r') as f:
+                self.data = json.load(f)
+        except FileNotFoundError:
+            self.data = {}  # Initialize with default values if file doesn't exist
+```
 
-- **Maintainability:**
+**Notes**
 
-  - If modifications to the business logic are necessary, make them in `core.py` and update your UI accordingly to reflect these changes.
+- Adjust the example to fit your own data structures and class design.
+- Handle exceptions appropriately to prevent crashes due to missing or corrupted files.
+- Remember that these are guidelines to help you; feel free to tailor them to your project's needs.
 
-- **Usability:**
-  - Design your UI to be intuitive and easy to navigate. Prioritize a clean layout and responsive interactions to enhance user satisfaction.
+**Reference**
 
-### Documenting Your Code
-
-Ensure that your project is well-documented to facilitate testing and usage:
-
-- **README File:**  
-  Update your README with clear instructions on how to run and test your UI. Include details specific to the UI type you’ve implemented.
-
-- **Running Instructions:**
-
-  - For **Pygame** or **Flask** applications, provide step-by-step instructions on setting up the environment and running the program locally.
-  - Example:
-    - **Flask:**
-      ```bash
-      python web.py
-      ```
-      Then navigate to `http://localhost:5000` in your browser.
-    - **Pygame:**
-      ```bash
-      python game.py
-      ```
-
-- **Reference Example Projects:**  
-  Consult the [Example Projects](https://github.com/fu-cs-121/final-project/blob/main/resources/examples.md) for guidance on structuring your documentation effectively.
+- For a practical example, you can refer to the `save_to_file` and `load_from_file` methods in the [Journal App Example](https://github.com/fu-cs-121/final-project-example-web/blob/main/core.py#L56-L79).
 
 ---
 
-## Final Tips
+### Part 3: Documentation
 
-- **Iterative Development:**  
-  Develop your UI incrementally, testing each component as you build to ensure functionality and usability.
+Update your `readme.md` to include all necessary information to understand, set up, and run your program.
 
-- **User Feedback:**  
-  If possible, gather feedback from potential users to identify areas for improvement.
+**Tips for Updating Your README**
 
-- **Consistency:**  
-  Maintain a consistent design and interaction pattern throughout your UI to enhance the user experience.
+- **Project Overview**: Briefly describe what your project does and why you made it.
+- **Setup Instructions**: List any dependencies and provide instructions on how to install them.
+- **Running the Program**: Explain how to run your program, including any command-line instructions.
+- **Usage Guide**: Provide details on how to use your program's features.
+- **Clean Up**: Remove any placeholder text and ensure the document is clear and free of errors.
+
+**Final Touches**
+
+- Ensure your documentation is clear, concise, and user-friendly.
+- Update your `changelog.md` with the latest changes, especially noting any usability improvements based on testing.
+
+---
+
+## Submission
+
+Commit and push your code! Remember, the code examples and instructions provided are guidelines to help you enhance your project. Feel free to adjust them to suit your needs. The goal is to make your project as reliable and simple as possible.
+
+If you'd like a code review or need any assistance, don't hesitate to reach out.
